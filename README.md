@@ -5,7 +5,52 @@ you can run the api using in the root of this repository
 ```
 java -jar webflux.jar
 ```
-## K6
+
+after you can Ramp-up the docker using *docker-compose*
+```
+docker compose up -d
+```
+
+# API Endpoints
+
+### GET v1/playlist/events
+MVC Events Stream to compare with Reactive Events Stream
+```
+curl --location --request GET 'localhost:8080/v1/playlist/events'
+```
+
+## Reactive Endpoints 
+
+### GET v2/playlist/events
+Reactive Events Stream
+```
+curl --location --request GET 'localhost:8080/v2/playlist/events'
+```
+
+### POST v2/playlist
+Create new playlist
+```
+curl --location --request POST 'http://localhost:8080/v2/playlist' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "nome":"Teste"
+}'
+```
+
+### GET v2/playlist
+Find all playlists
+```
+curl --location --request GET 'http://localhost:8080/v1/playlist'
+```
+
+### GET v2/playlist/{id}
+Find playlist by Id
+```
+curl --location --request GET 'http://localhost:8080/v1/playlist/{id}'
+```
+
+
+# K6
 Install K6 in your machine at first!
 https://k6.io/docs/
 
