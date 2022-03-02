@@ -1,7 +1,7 @@
 # Intro
 Load test of our Spring Webflux API
 
-you can run the api using in the root of this repository
+you can run the api with the following command:
 ```
 java -jar webflux.jar
 ```
