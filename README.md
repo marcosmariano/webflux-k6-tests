@@ -1,10 +1,13 @@
-# docker-k6-grafana-influxdb
-Demonstrates how to run load tests with containerised instances of K6, Grafana and InfluxDB.
+# Intro
+Load test of our Spring Webflux API
 
-#### Article
-This is the accompanying source code for the following article. Please read for a detailed breakdown of the code and how K6, Grafana and InfluxDB work together using Docker Compose:
-
-https://medium.com/swlh/beautiful-load-testing-with-k6-and-docker-compose-4454edb3a2e3
+you can run the api using in the root of this repository
+```
+java -jar webflux.jar
+```
+## K6
+Install K6 in your machine at first!
+https://k6.io/docs/
 
 #### Dashboards
 The dashboard in /dashboards is adapted from the excellent K6 / Grafana dashboard here:
@@ -15,7 +18,15 @@ There are only two small modifications:
 * the time period is set to now-15m, which I feel is a better view for most tests
 
 #### Scripts
-The script here is an example of a low Virtual User (VU) load test of the excellent Star Wars API:
-https://swapi.dev/
 
-If you're tinkering with the script, it is just a friendly open source API, be gentle!
+Here are the scripts to run the tests and write it at the influxdb
+```
+k6 run ./scripts/findByIdPlaylists.js -o influxdb=http://localhost:8086/k6 
+
+k6 run ./scripts/findAllPlaylists.js -o influxdb=http://localhost:8086/k6 
+
+k6 run ./scripts/mvcEventStreamPlaylist.js -o influxdb=http://localhost:8086/k6 
+
+k6 run ./scripts/webfluxEventStreamPlaylist.js -o influxdb=http://localhost:8086/k6 
+
+```
