@@ -13,6 +13,8 @@ https://k6.io/docs/
 The dashboard in /dashboards is adapted from the excellent K6 / Grafana dashboard here:
 https://grafana.com/grafana/dashboards/2587
 
+In your local machine access http://localhost:3000/d/k6/k6-load-testing-results?orgId=1&refresh=5s&from=now-2d&to=now to see the dashboards
+
 There are only two small modifications:
 * the data source is configured to use the docker created InfluxDB data source
 * the time period is set to now-15m, which I feel is a better view for most tests
